@@ -10,18 +10,16 @@
       <% for(var i=0; i < chores.length; i++) { %>
         <% chore = chores[i] %>
         <div class="chore-containers">
-          <span class="chores">
-            <%- chore.title %> -
-          </span>
+          <span class="chores"><%- chore.title %> -</span>
 
           <% if (chore.done_at) { %>
-            <span>Good work!</span>
+            <span>❤️ Good work!</span>
           <% } else { %>
             <a
               type="button"
-              data-id="<%= chores.id %>"
+              data-id="<%= chore.id %>"
               class="heart chore-done"
-            >❤️
+            >⚡️
               Done
             </a>
          <% } %>

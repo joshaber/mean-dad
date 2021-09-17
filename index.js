@@ -22,7 +22,7 @@ app.use((req, res, next)=> {
 })
 
 app.get('/', (req, res) => {
-  pool.query('SELECT * FROM chores ORDER BY due_date', (err, chores) => {
+  pool.query('SELECT * FROM chores ORDER BY done_at', (err, chores) => {
     res.render('index', {chores: chores.rows});
   });
 });
