@@ -3,10 +3,6 @@
   <head>
     <title>Chores</title>
     <link href="/css/main.css" rel="stylesheet" type="text/css">
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
   </head>
   <body>
     <h1>Chores</h1>
@@ -20,21 +16,37 @@
           <a
             type="button"
             data-id="<%= chores[i].id %>"
-            class="heart"
-            onclick="markDone()"
+            class="heart chore-done"
           >❤️
             Done
           </a>
         </div>
       <% } %>
+      <script>
+        for (const el of document.getElementsByClassName("chore-done")) {
+          el.onclick = markDone
+        }
+
+        function markDone(e) {
+          console.log("event!!")
+          console.log(e)
+          console.log(this)
+          const el = e.target;
+          const id = el.getAttribute('data-id');
+          console.log("id", id)
+          console.log("body", id)
+          const body = JSON.stringify({id: id})
+          fetch('/done', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: body
+          });
+          el.classList.add('done');
+        }
+      </script>
     </div>
   </body>
-  <script>
-    async function markDone(e) {
-      const element = e.target;
-      const id = element.getAttribute('data-id');
-      await fetch('/done', {method: 'POST', body: JSON.stringify({id: id})});
-      element.addClass('done');
-    }
-  </script>
 </html>

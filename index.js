@@ -16,8 +16,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'))
 app.set('view engine', 'ejs');
 
-console.log('hi');
-
 app.get('/', (req, res) => {
   pool.query('SELECT * FROM chores ORDER BY due_date', (err, chores) => {
     res.render('index', {chores: chores.rows});
@@ -25,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/done', (req, res) => {
+  console.log("got the done", req, req.body)
   pool.query('UPDATE chores SET done_at = NOW() WHERE id = $1', [req.body.id], (err, result) => {
     res.send('Success');
   });

@@ -3,16 +3,16 @@ CREATE TABLE chores (
     title           text,
     person          text,
     due_date        date,
-    done_at         datetime
+    done_at         timestamp
 );
 
 INSERT INTO chores (title, due_date) VALUES
     (
-        'Feed Pippin',
+        'Make your bed',
         NOW()
     ),
     (
-        'Make your bed',
+        'Feed Pippin',
         NOW()
     ),
     (
