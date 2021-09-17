@@ -8,6 +8,14 @@
     "remoteUser": "node",
 
     "forwardPorts": [3000, 5432],
+    "portsAttributes": {
+        "3000": {
+          "label": "web"
+        },
+        "5432": {
+          "label": "postgres"
+        }
+    },
 
     // Specifies a command that should be run after the container has been created.
     "postCreateCommand": "npm install",
