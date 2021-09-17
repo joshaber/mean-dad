@@ -6,17 +6,25 @@ CREATE TABLE chores (
     done_at         timestamp
 );
 
-INSERT INTO chores (title, due_date) VALUES
+INSERT INTO chores (title, person, due_date) VALUES
     (
         'Make your bed',
+        'Lily',
+        NOW()
+    ),
+    (
+        'Make your bed',
+        'Larry',
         NOW()
     ),
     (
         'Feed Pippin',
+        'Lily',
         NOW()
     ),
     (
         'Set the table',
+        'Larry',
         NOW()
     )
 ;

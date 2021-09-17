@@ -8,18 +8,23 @@
     <h1>Chores</h1>
     <div>
       <% for(var i=0; i < chores.length; i++) { %>
-        <div
-          class="chore-containers">
-          <p
-            class="chores"
-          ><%- chores[i].title %></p>
-          <a
-            type="button"
-            data-id="<%= chores[i].id %>"
-            class="heart chore-done"
-          >❤️
-            Done
-          </a>
+        <% chore = chores[i] %>
+        <div class="chore-containers">
+          <span class="chores">
+            <%- chore.title %> -
+          </span>
+
+          <% if (chore.done_at) { %>
+            <span>Good work!</span>
+          <% } else { %>
+            <a
+              type="button"
+              data-id="<%= chores.id %>"
+              class="heart chore-done"
+            >❤️
+              Done
+            </a>
+         <% } %>
         </div>
       <% } %>
       <script>
@@ -39,7 +44,7 @@
             },
             body: body
           });
-          el.classList.add('done');
+          location.reload()
         }
       </script>
     </div>

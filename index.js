@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.post('/done', (req, res) => {
   pool.query('UPDATE chores SET done_at = NOW() WHERE id = $1', [req.body.id], (err, result) => {
-    res.redirect('/')
+    res.send('Success');
   });
 });
 
