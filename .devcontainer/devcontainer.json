@@ -1,5 +1,5 @@
 {
-    "name": "Haikus for june",
+    "name": "mean-dad",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "web",
 	"workspaceFolder": "/workspace",
@@ -9,7 +9,7 @@
 
     "forwardPorts": [3000, 5432],
 
-    // Use 'settings' to set *default* container specific settings.json values on container create. 
+    // Use 'settings' to set *default* container specific settings.json values on container create.
     // You can edit these settings after create using File > Preferences > Settings > Remote.
     "settings": {
         "terminal.integrated.shell.linux": "/bin/bash",

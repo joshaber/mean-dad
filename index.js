@@ -1,7 +1,5 @@
 let express = require('express');
 let app = express();
-let ejs = require('ejs');
-const haikus = require('./haikus.json');
 const port = process.env.PORT || 3000;
 const { Pool } = require('pg')
 
@@ -21,13 +19,13 @@ app.set('view engine', 'ejs');
 console.log('hi');
 
 app.get('/', (req, res) => {
-  pool.query('SELECT * FROM haikus ORDER BY id', (err, haikus) => {
-    res.render('index', {haikus: haikus.rows});
+  pool.query('SELECT * FROM chores ORDER BY due_date', (err, chores) => {
+    res.render('index', {chores: chores.rows});
   });
 });
 
-app.post('/heart', (req, res) => {
-  pool.query('UPDATE haikus SET hearts = hearts + 1 WHERE id = $1', [req.body.id], (err, haikus) => {
+app.post('/done', (req, res) => {
+  pool.query('UPDATE chores SET done_at = NOW() WHERE id = $1', [req.body.id], (err, result) => {
     res.send('Success');
   });
 });

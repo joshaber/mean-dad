@@ -1,5 +1,6 @@
-# Haikus for June
+# mean-dad
 
-A basic node / postgres app using an ejs template and a few API endpoints.
-
-Readme updates in progress!
+```
+npm install
+npm start
+```
